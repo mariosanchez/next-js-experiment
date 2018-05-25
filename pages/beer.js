@@ -1,18 +1,27 @@
+import React from "react";
+import { connect } from "react-redux";
 import Layout from "../app/components/Layout";
-import fetch from 'isomorphic-unfetch'
+import { fetchBeer } from "../app/actions";
 
-const Beer = ({ beer }) => (
-  <Layout>
-    <p>{ beer.name }</p>
-  </Layout>
-);
+class Beer extends React.Component {
+  static getInitialProps(props) {
+    const { store, query } = props;
+    const id = query.id;
 
-Beer.getInitialProps = async function (context) {
-  const { id } = context.query;
-  const res = await fetch(`https://api.punkapi.com/v2/beers/${id}`);
-  const beers = await res.json();
+    if (!store.getState().beers[id]) {
+      store.dispatch(fetchBeer(id));
+    }
 
-  return { beer: beers[0] }
+    return { id };
+  }
+
+  render() {
+    return (
+      <Layout>
+        <p>{this.props.beers[this.props.id].name}</p>
+      </Layout>
+    );
+  }
 }
 
-export default Beer;
+export default connect(state => state)(Beer);

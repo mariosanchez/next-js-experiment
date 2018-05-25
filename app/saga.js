@@ -21,9 +21,9 @@ function* runClockSaga() {
   }
 }
 
-function* fetchBeerSaga() {
+function* fetchBeerSaga({ id }) {
   try {
-    const res = yield fetch("https://jsonplaceholder.typicode.com/users");
+    const res = yield fetch(`https://api.punkapi.com/v2/beers/${id}`);
     const data = yield res.json();
     yield put(fetchBeersSuccess(data));
   } catch (err) {
@@ -46,6 +46,7 @@ function* fetchBeersSaga({ page, perPage }) {
 function* rootSaga() {
   yield all([
     call(runClockSaga),
+    takeLatest(actionTypes.FETCH_BEER, fetchBeerSaga),
     takeLatest(actionTypes.FETCH_BEERS, fetchBeersSaga)
   ]);
 }

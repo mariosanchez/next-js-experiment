@@ -13,7 +13,7 @@ const BeerItemImage = styled.img`
 `;
 
 class Index extends React.Component {
-  static async getInitialProps(props) {
+  static getInitialProps(props) {
     const { store } = props;
 
     if (Object.keys(store.getState().beers).length === 0) {
