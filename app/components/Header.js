@@ -1,21 +1,27 @@
 import Link from "next/link";
+import styled from "react-emotion";
 
-const linkStyle = {
-  marginRight: 15
-};
+const HeaderWrapper = styled.div`
+a {
+  margin-right: 15px;
+}
+`;
 
 const Header = () => (
-  <div>
+  <HeaderWrapper>
     <Link href="/">
-      <a style={linkStyle}>Home</a>
+      <a>Home</a>
     </Link>
     <Link href="/emotion">
-      <a style={linkStyle}>Emotion</a>
+      <a>Emotion</a>
+    </Link>
+    <Link href="/sagas">
+      <a>Redux Sagas</a>
     </Link>
     <Link href="/about">
-      <a style={linkStyle}>About</a>
+      <a>About</a>
     </Link>
-  </div>
+  </HeaderWrapper>
 );
 
 export default Header;
