@@ -3,8 +3,9 @@ export const actionTypes = {
   INCREMENT: "INCREMENT",
   DECREMENT: "DECREMENT",
   RESET: "RESET",
-  LOAD_DATA: "LOAD_DATA",
-  LOAD_DATA_SUCCESS: "LOAD_DATA_SUCCESS",
+  FETCH_BEER: "FETCH_BEER",
+  FETCH_BEERS: "FETCH_BEERS",
+  FETCH_BEERS_SUCCESS: "FETCH_BEERS_SUCCESS",
   START_CLOCK: "START_CLOCK",
   TICK_CLOCK: "TICK_CLOCK"
 };
@@ -28,13 +29,24 @@ export function reset() {
   return { type: actionTypes.RESET };
 }
 
-export function loadData() {
-  return { type: actionTypes.LOAD_DATA };
+export function fetchBeer(id) {
+  return {
+    type: actionTypes.FETCH_BEER,
+    id
+  };
 }
 
-export function loadDataSuccess(data) {
+export function fetchBeers(page = 1, perPage = 5) {
   return {
-    type: actionTypes.LOAD_DATA_SUCCESS,
+    type: actionTypes.FETCH_BEERS,
+    page,
+    perPage
+  };
+}
+
+export function fetchBeersSuccess(data) {
+  return {
+    type: actionTypes.FETCH_BEERS_SUCCESS,
     data
   };
 }

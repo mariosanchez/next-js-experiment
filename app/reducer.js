@@ -5,7 +5,7 @@ export const exampleInitialState = {
   error: false,
   lastUpdate: 0,
   light: false,
-  placeholderData: null
+  beers: {}
 };
 
 function reducer(state = exampleInitialState, action) {
@@ -34,10 +34,16 @@ function reducer(state = exampleInitialState, action) {
         ...{ count: exampleInitialState.count }
       };
 
-    case actionTypes.LOAD_DATA_SUCCESS:
+    case actionTypes.FETCH_BEERS_SUCCESS:
+      const beers = {};
+
+      action.data.forEach(element => {
+        beers[element.id] = element;
+      });
+
       return {
         ...state,
-        ...{ placeholderData: action.data }
+        ...{ beers }
       };
 
     case actionTypes.TICK_CLOCK:

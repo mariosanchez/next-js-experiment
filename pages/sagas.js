@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { loadData, startClock, tickClock } from "../app/actions";
+import { startClock, tickClock } from "../app/actions";
 import Layout from "../app/components/Layout";
 import Clock from "../app/components/Clock";
 import Counter from "../app/components/Counter";

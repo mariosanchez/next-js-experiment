@@ -1,35 +1,46 @@
+import React from "react";
+import { toArray } from "lodash";
+import { connect } from "react-redux";
+import Link from "next/link";
+import fetch from "isomorphic-unfetch";
+import styled, { hydrate, keyframes, css } from "react-emotion";
+import { fetchBeers } from "../app/actions";
 import Layout from "../app/components/Layout";
-import Link from 'next/link'
-import fetch from 'isomorphic-unfetch'
-import styled, { hydrate, keyframes, css } from 'react-emotion'
 
 const BeerItemImage = styled.img`
   max-width: 100px;
   max-height: 200px;
-`
+`;
 
-const Index = ({ beers }) => (
-  <Layout>
-    <h1>Punk API</h1>
-    <h2>Beer list</h2>
-    { beers.map(beer => (
-      <Link as={`/beer/${beer['id']}`} href={`/beer?id=${beer['id']}`} key={beer['name']}> 
-        <a>
-          <h3>{beer['name']}</h3>
-          <BeerItemImage src={beer['image_url']} alt={beer['name']}/>
-        </a>
-      </Link>
-    ))}
-  </Layout>
-);
+class Index extends React.Component {
+  static async getInitialProps(props) {
+    const { store } = props;
 
-Index.getInitialProps = async function() {
-  const res = await fetch('https://api.punkapi.com/v2/beers?page=1&per_page=5')
-  const data = await res.json()
+    if (Object.keys(store.getState().beers).length === 0) {
+      store.dispatch(fetchBeers());
+    }
+  }
 
-  return {
-    beers: data
+  render() {
+    return (
+      <Layout>
+        <h1>Punk API</h1>
+        <h2>Beer list</h2>
+        {toArray(this.props.beers).map(beer => (
+          <Link
+            as={`/beer/${beer["id"]}`}
+            href={`/beer?id=${beer["id"]}`}
+            key={beer["name"]}
+          >
+            <a>
+              <h3>{beer["name"]}</h3>
+              <BeerItemImage src={beer["image_url"]} alt={beer["name"]} />
+            </a>
+          </Link>
+        ))}
+      </Layout>
+    );
   }
 }
 
-export default Index
+export default connect(state => state)(Index);
