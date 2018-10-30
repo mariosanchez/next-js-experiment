@@ -24,7 +24,8 @@
   },
   "scripts": {
     "dev": "node ./server/server.js",
-    "dev:debug": "node --inspect-brk ./server/server.js"
+    "dev:debug": "node --inspect-brk ./server/server.js",
+    "build": "next build"
   },
   "devDependencies": {
     "redux-devtools-extension": "^2.13.5"
