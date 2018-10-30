@@ -29,4 +29,4 @@ function configureStore(initialState = exampleInitialState) {
   return store;
 }
 
-export default configureStore
+export default configureStore;

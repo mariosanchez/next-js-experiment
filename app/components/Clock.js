@@ -1,5 +1,5 @@
 import React from "react";
-import styled from 'react-emotion'
+import styled from "react-emotion";
 
 const ClockWrapper = styled.div`
   margin: 2rem 0;
@@ -8,7 +8,7 @@ const ClockWrapper = styled.div`
   color: #82fa58;
   font: 50px menlo, monaco, monospace;
   background-color: #000;
-  
+
   &.light {
     background-color: #999;
   }
@@ -25,7 +25,9 @@ const format = t => {
 
 function Clock({ lastUpdate, light }) {
   return (
-    <ClockWrapper className={light ? "light" : ""}>{format(new Date(lastUpdate))}</ClockWrapper>
+    <ClockWrapper className={light ? "light" : ""}>
+      {format(new Date(lastUpdate))}
+    </ClockWrapper>
   );
 }
 

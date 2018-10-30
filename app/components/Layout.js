@@ -1,12 +1,12 @@
 import Header from "./Header";
 
-import React from 'react'
-import { hydrate, injectGlobal } from 'react-emotion'
+import React from "react";
+import { hydrate, injectGlobal } from "react-emotion";
 
 // Adds server generated styles to emotion cache.
 // '__NEXT_DATA__.ids' is set in '_document.js'
-if (typeof window !== 'undefined') {
-  hydrate(window.__NEXT_DATA__.ids)
+if (typeof window !== "undefined") {
+  hydrate(window.__NEXT_DATA__.ids);
 }
 
 injectGlobal`
@@ -23,7 +23,7 @@ injectGlobal`
       color: yellow;
     }
   }
-`
+`;
 
 const Layout = props => (
   <div>

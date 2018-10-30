@@ -2,9 +2,9 @@ import Link from "next/link";
 import styled from "react-emotion";
 
 const HeaderWrapper = styled.div`
-a {
-  margin-right: 15px;
-}
+  a {
+    margin-right: 15px;
+  }
 `;
 
 const Header = () => (

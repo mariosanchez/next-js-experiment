@@ -1,6 +1,6 @@
-import React from 'react'
-import styled, { hydrate, keyframes, css } from 'react-emotion'
-import Layout from '../app/components/Layout';
+import React from "react";
+import styled, { hydrate, keyframes, css } from "react-emotion";
+import Layout from "../app/components/Layout";
 
 const basicStyles = css`
   background-color: white;
@@ -12,7 +12,7 @@ const basicStyles = css`
   transition: all 0.1s linear;
   margin: 3rem 0;
   padding: 1rem 0.5rem;
-`
+`;
 const hoverStyles = css`
   &:hover {
     color: white;
@@ -20,7 +20,7 @@ const hoverStyles = css`
     border-color: aqua;
     box-shadow: -15px -15px 0 0 aqua, -30px -30px 0 0 cornflowerblue;
   }
-`
+`;
 const bounce = keyframes`
   from {
     transform: scale(1.01);
@@ -28,11 +28,11 @@ const bounce = keyframes`
   to {
     transform: scale(0.99);
   }
-`
+`;
 
 const Basic = styled.div`
   ${basicStyles};
-`
+`;
 
 const Combined = styled.div`
   ${basicStyles};
@@ -40,7 +40,7 @@ const Combined = styled.div`
   & code {
     background-color: linen;
   }
-`
+`;
 const Animated = styled.div`
   ${basicStyles};
   ${hoverStyles};
@@ -48,7 +48,7 @@ const Animated = styled.div`
     background-color: linen;
   }
   animation: ${props => props.animation} 0.2s infinite ease-in-out alternate;
-`
+`;
 
 const Emotion = props => (
   <Layout>

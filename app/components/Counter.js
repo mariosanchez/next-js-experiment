@@ -1,8 +1,8 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import styled from 'react-emotion'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import styled from "react-emotion";
 
-import {increment, decrement, reset} from '../actions'
+import { increment, decrement, reset } from "../actions";
 
 const ClockWrapper = styled.div`
   padding: 0 0 20px 0;
@@ -10,19 +10,19 @@ const ClockWrapper = styled.div`
 
 class Counter extends Component {
   increment = () => {
-    this.props.dispatch(increment())
-  }
+    this.props.dispatch(increment());
+  };
 
   decrement = () => {
-    this.props.dispatch(decrement())
-  }
+    this.props.dispatch(decrement());
+  };
 
   reset = () => {
-    this.props.dispatch(reset())
-  }
+    this.props.dispatch(reset());
+  };
 
-  render () {
-    const {count} = this.props
+  render() {
+    const { count } = this.props;
     return (
       <ClockWrapper>
         <h1>
@@ -32,9 +32,9 @@ class Counter extends Component {
         <button onClick={this.decrement}>-1</button>
         <button onClick={this.reset}>Reset</button>
       </ClockWrapper>
-    )
+    );
   }
 }
 
-const mapStateToProps = ({count}) => ({count})
-export default connect(mapStateToProps)(Counter)
+const mapStateToProps = ({ count }) => ({ count });
+export default connect(mapStateToProps)(Counter);
